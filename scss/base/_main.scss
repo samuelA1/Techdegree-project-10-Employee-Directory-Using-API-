@@ -1,0 +1,47 @@
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  background: $body-bg;
+  @include flex(row, wrap, space-around);
+}
+
+header {
+  @include flex(column, wrap, space-between);
+  @include box(100%, .5rem auto, 0);
+  @include media('med') {
+    @include flex(row, nowrap);
+    @include box($n, 1rem auto 0 2%);
+  }
+  input {
+    @include flexAdds($n, center);
+    @include box(70%, auto, .5rem);
+    @include borders(solid 1px $boxBorder, .5rem);
+    @include media('med') {
+      @include box(200px, 0 1.5rem 0 auto, .5rem);
+    }
+    &::placeholder {
+      @include fonts(.9rem, $boxBorder, $n, 300);
+      font-style: italic;
+    }
+  }
+}
+
+h1 {
+  @include flexAdds($n, center);
+  @include fonts(.9rem, $n, $n, 900);
+  white-space: nowrap;
+  @include media('med') {
+    @include fonts(1.5rem, $n, left);
+  }
+}
+
+.noUsers {
+  visibility: hidden;
+  position: fixed;
+  z-index: 300;
+  top: 20%;
+  @include box(100%, .5rem auto);
+  @include fonts(1.5rem, $n, center);
+}

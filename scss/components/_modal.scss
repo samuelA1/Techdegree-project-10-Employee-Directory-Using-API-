@@ -1,0 +1,101 @@
+.overlay {
+  @include position(fixed, -100%, 0);
+  @include box(100%, $tall: 100%);
+  background: $modalBG;
+  opacity: 0;
+  z-index: 100;
+  // transition: all .2s ease-out;
+}
+
+.overlayShow {
+  opacity: .5;
+  @include position($t: 0);
+}
+
+.modal {
+  @include position(absolute, 5%, $r: 100%);
+  @include box(80%, 0, 1rem, 87%);
+  background: $boxBG;
+  opacity: 0;
+  z-index: 101;
+  @include fonts($n, $n, center);
+  @include borders(solid 3px $boxBorder, .5em);
+  @include media('med') {
+    @include box(436px, 0, 2rem, 550px);
+    @include position($n, 8%);
+  }
+}
+
+[id^="trigger"]:checked + .modal {
+  opacity: 1;
+  @include position($n, $n, 50%);
+  @include box($n, 0 0 0 -45%);
+  @include media('med') {
+    @include box($n, 0 0 0 -253px);
+  }
+}
+
+.modal-smile {
+  @include min-max(150px, 150px);
+  @include box(150px, 1rem, $n, 150px);
+  @include borders($n, 50%);
+  @include media('med') {
+    @include min-max(200px, 200px);
+    @include box(200px, 1rem, $n, 200px);
+  }
+}
+
+.modal-name {
+  @include fonts(2rem);
+  @include box($n, 0 0 1rem 0, 0);
+}
+
+.modal-text {
+  @extend %modalText;
+}
+
+hr {
+  @include box($n, 2rem 0, $n, 2px);
+  background: $boxBorder;
+  border: 0;
+}
+
+.close {
+  @include position(absolute, 20px, $r: 20px);
+  @include fonts(1.5rem, $minorText, $n, 900);
+  cursor: pointer;
+  opacity: .5;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.buttons {
+  @include position(absolute);
+  @include fonts(2rem, $minorText);
+  opacity: .3;
+  cursor: pointer;
+  @include media('med') {
+    @include fonts(3rem);
+  }
+}
+
+.buttons:hover {
+  opacity: 1;
+}
+
+.leftButton {
+  @include position($n, 40%, 10px);
+}
+
+.rightButton {
+  @include position($n, 40%, $r: 10px);
+}
+
+.trigger {
+  position: absolute;
+  z-index: -100;
+  transform: translateY(-300px);
+  visibility: hidden;
+}

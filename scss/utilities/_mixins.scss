@@ -1,0 +1,59 @@
+@mixin flex($direction: $n, $wrap: $n, $justify: $n,  $flexAlign: $n) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: $flexAlign;
+}
+
+@mixin flexAdds($grow: $n, $alignSelf: $n) {
+  flex-grow: $grow;
+  align-self: $alignSelf;
+  @content;
+}
+
+@mixin box($wide: $n, $marg: $n, $pad: $n, $tall: $n) {
+  width: $wide;
+  margin: $marg;
+  padding: $pad;
+  height: $tall;
+}
+
+@mixin fonts($fSize: $n, $fColor: $n, $tAlign: $n, $fWeight: $n) {
+  font-size: $fSize;
+  color: $fColor;
+  text-align: $tAlign;
+  font-weight: $fWeight;
+}
+
+@mixin borders($border: $n, $bRadius: $n) {
+  border: $border;
+  border-radius: $bRadius;
+}
+
+@mixin media($size) {
+  @if $size == 'med' {
+    @media #{$break-m} {
+      @content;
+    }
+  } @else if $size == 'lg' {
+    @media #{$break-l} {
+      @content;
+    }
+  }
+}
+
+@mixin min-max($mnw: $n, $mnh: $n, $mxw: $n, $mxh: $n) {
+  min-width: $mnw;
+  min-height: $mnh;
+  max-width: $mxw;
+  max-height: $mxh;
+}
+
+@mixin position($pos: $n, $t: $n, $l: $n, $r: $n, $b: $n) {
+  position: $pos;
+  top: $t;
+  left: $l;
+  right: $r;
+  bottom: $b;
+}
